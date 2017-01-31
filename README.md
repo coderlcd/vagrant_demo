@@ -1,2 +1,3 @@
 # vagrant_demo
-Deploy a test vagrant machine to test for educational purposes
+
+Simple Vagrantfiles for creating and provisioning machines for standard, educational use
