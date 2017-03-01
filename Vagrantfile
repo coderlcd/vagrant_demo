@@ -45,34 +45,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         vb.customize ["modifyvm", :id, "--cpus", $box_vcpus]
       end
 
-	#Checks if platform is windows, if TRUE runs Ansible from within virtual machine
+  # We only want Ansible to run after after all servers are deployed:
+	#Checks if platform is Windows, if TRUE runs Ansible from within virtual machine
 	if Vagrant::Util::Platform.windows?
 		config.vm.provision :guest_ansible do |ansible|
 		  ansible.sudo              = true
       ansible.limit             = $ansible_limit
       ansible.playbook          = $ansible_playbook
       ansible.host_key_checking = false    		
-	end
+	   end
   	else
     		config.vm.provision :ansible do |ansible|
       		ansible.sudo              = true
         	ansible.limit             = $ansible_limit
-        	ansible.playbook          = "bootstrap_env/bootstrap.yml"
+        	ansible.playbook          = $ansible_playbook
         	ansible.host_key_checking = false
-    	end
+    	   end
   	end
 
     # We only want Ansible to run after after all servers are deployed:
-      node.vm.provision :ansible do |ansible|
-        #ansible.sudo              = true
-        #ansible.limit             = $ansible_limit
-        #ansible.playbook          = $ansible_playbook
-        #ansible.host_key_checking = false
-        
         # Additional Ansible tools for debugging:
         #ansible.inventory_path = $ansible_inventory
         #ansible.verbose        = "-vvvv"
         #ansible.raw_ssh_args   = ANSIBLE_RAW_SSH_ARGS
-        end
-      end
-    end
