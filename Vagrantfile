@@ -34,9 +34,7 @@ end
 # Vagrantfile API/sytax version. Don’t touch unless you know what you’re doing!
 VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-
     config.vm.define vm_name = "DevBox" do |node|
-
       node.vm.box = $box_name
       node.vm.hostname = "DevBox"
       
@@ -50,10 +48,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	#Checks if platform is windows, if TRUE runs Ansible from within virtual machine
 	if Vagrant::Util::Platform.windows?
 		config.vm.provision :guest_ansible do |ansible|
-		ansible.sudo              = true
-        	ansible.limit             = $ansible_limit
-       		ansible.playbook          = $ansible_playbook
-        	ansible.host_key_checking = false    		
+		  ansible.sudo              = true
+      ansible.limit             = $ansible_limit
+      ansible.playbook          = $ansible_playbook
+      ansible.host_key_checking = false    		
 	end
   	else
     		config.vm.provision :ansible do |ansible|
