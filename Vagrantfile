@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     		config.vm.provision :ansible do |ansible|
       		ansible.sudo              = true
         	ansible.limit             = $ansible_limit
-        	ansible.playbook          = $ansible_playbook
+        	ansible.playbook          = "bootstrap_env/bootstrap.yml"
         	ansible.host_key_checking = false
     	end
   	end

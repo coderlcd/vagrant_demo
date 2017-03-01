@@ -9,5 +9,5 @@ $ssh_port          = 22
 
 # Ansible Details:
 $ansible_limit     = "all"
-$ansible_playbook  = "~/bootstrap_env/bootstrap.yml"
+$ansible_playbook  = "bootstrap_env/bootstrap.yml"
 $ansible_inventory = ".vagrant/provisioners/ansible/inventory_override"
