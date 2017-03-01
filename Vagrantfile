@@ -68,3 +68,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         #ansible.inventory_path = $ansible_inventory
         #ansible.verbose        = "-vvvv"
         #ansible.raw_ssh_args   = ANSIBLE_RAW_SSH_ARGS
+      end
+
